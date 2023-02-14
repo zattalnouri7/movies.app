@@ -6,11 +6,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import ReactStars from "react-rating-stars-component";
+import { Link } from 'react-router-dom';
 import Addmovie from './Addmovie';
 
 
 
-function NavBarr({movies,setmovies,settext,setrate}) {
+function NavBarr({ movies, setmovies, settext, setrate }) {
     return (
         <Navbar bg="dark" expand="lg" variant="dark" >
             <Container fluid>
@@ -22,11 +23,11 @@ function NavBarr({movies,setmovies,settext,setrate}) {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Home</Nav.Link>
+                        <Nav.Link href="#action1"> <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>Home</Link> </Nav.Link>
                         <NavDropdown title="genre" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action3">Film</NavDropdown.Item>
+                            <NavDropdown.Item href="#action3"><Link to='/film' style={{ textDecoration: 'none', color: 'black' }}>Film</Link></NavDropdown.Item>
                             <NavDropdown.Item href="#action4">
-                                Serie
+                                <Link to='/ser' style={{ textDecoration: 'none', color: 'black' }}>Serie</Link>
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
@@ -34,7 +35,7 @@ function NavBarr({movies,setmovies,settext,setrate}) {
                         count={5}
                         size={24}
                         activeColor="#ffd700"
-                        onChange={(newRating)=>setrate(newRating)}
+                        onChange={(newRating) => setrate(newRating)}
                     /></div>
                     <Form className="d-flex">
                         <Form.Control
@@ -42,13 +43,13 @@ function NavBarr({movies,setmovies,settext,setrate}) {
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
-                            onChange={(e)=>settext(e.target.value)}
+                            onChange={(e) => settext(e.target.value)}
                         />
-                        ,<Addmovie movies={movies} setmovies={setmovies}/>
+                        ,<Addmovie movies={movies} setmovies={setmovies} />
                     </Form>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
     )
 }
 
